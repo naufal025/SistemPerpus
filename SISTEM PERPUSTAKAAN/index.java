@@ -239,70 +239,70 @@ public class index {
                     System.out.print("\nMasukkan Nama Buku: ");
                     String namaBuku = input.nextLine();
                     switch (namaBuku) {
-                        case "Buku A":
-                            System.out.println("\n ___________________________");
-                            System.out.println("|                           |");
-                            System.out.println("| Judul Buku      : Buku A  |");
-                            System.out.println("| Penulis         : Si A    |");
-                            System.out.println("| Jumlah Halaman  : 100     |");
-                            System.out.println("| Letak           : Rak A   |");
-                            System.out.println("| Baris           : 1       |");
-                            System.out.println("|___________________________|");
+                        case "Laskar Pelangi":
+                            System.out.println("\n ___________________________________");
+                            System.out.println("|                                   |");
+                            System.out.println("| Judul Buku      : Laskar Pelangi  |");
+                            System.out.println("| Penulis         : Andrea Hinata   |");
+                            System.out.println("| Jumlah Halaman  : 529             |");
+                            System.out.println("| Letak           : Rak A           |");
+                            System.out.println("| Baris           : 1               |");
+                            System.out.println("|___________________________________|");
                             break;
 
-                        case "Buku B":
-                            System.out.println("\n ___________________________");
-                            System.out.println("|                           |");
-                            System.out.println("| Judul Buku      : Buku B  |");
-                            System.out.println("| Penulis         : Si B    |");
-                            System.out.println("| Jumlah Halaman  : 100     |");
-                            System.out.println("| Letak           : Rak A   |");
-                            System.out.println("| Baris           : 2       |");
-                            System.out.println("|___________________________|");
+                        case "Attack On Titan":
+                            System.out.println("\n ___________________________________");
+                            System.out.println("|                                   |");
+                            System.out.println("| Judul Buku      : Attack On Titan |");
+                            System.out.println("| Penulis         : Hajime Isayama  |");
+                            System.out.println("| Jumlah Halaman  : 192             |");
+                            System.out.println("| Letak           : Rak A           |");
+                            System.out.println("| Baris           : 2               |");
+                            System.out.println("|___________________________________|");
                             break;
 
-                        case "Buku C":
-                            System.out.println("\n ___________________________");
-                            System.out.println("|                           |");
-                            System.out.println("| Judul Buku      : Buku C  |");
-                            System.out.println("| Penulis         : Si C    |");
-                            System.out.println("| Jumlah Halaman  : 100     |");
-                            System.out.println("| Letak           : Rak A   |");
-                            System.out.println("| Baris           : 3       |");
-                            System.out.println("|___________________________|");
+                        case "Filosofi Teras":
+                            System.out.println("\n _____________________________________");
+                            System.out.println("|                                     |");
+                            System.out.println("| Judul Buku      : Filosofi Teras    |");
+                            System.out.println("| Penulis         : Henry Manampiring |");
+                            System.out.println("| Jumlah Halaman  : 344               |");
+                            System.out.println("| Letak           : Rak A             |");
+                            System.out.println("| Baris           : 3                 |");
+                            System.out.println("|_____________________________________|");
                             break;
 
-                        case "Buku D":
-                            System.out.println("\n ___________________________");
-                            System.out.println("|                           |");
-                            System.out.println("| Judul Buku      : Buku D  |");
-                            System.out.println("| Penulis         : Si D    |");
-                            System.out.println("| Jumlah Halaman  : 100     |");
-                            System.out.println("| Letak           : Rak B   |");
-                            System.out.println("| Baris           : 1       |");
-                            System.out.println("|___________________________|");
+                        case "Anatomic Habits":
+                            System.out.println("\n ____________________________________");
+                            System.out.println("|                                    |");
+                            System.out.println("| Judul Buku      : Anatomic Habits  |");
+                            System.out.println("| Penulis         : Clear James      |");
+                            System.out.println("| Jumlah Halaman  : 352              |");
+                            System.out.println("| Letak           : Rak B            |");
+                            System.out.println("| Baris           : 1                |");
+                            System.out.println("|____________________________________ww|");
                             break;
 
-                        case "Buku E":
-                            System.out.println("\n ___________________________");
-                            System.out.println("|                           |");
-                            System.out.println("| Judul Buku      : Buku E  |");
-                            System.out.println("| Penulis         : Si E    |");
-                            System.out.println("| Jumlah Halaman  : 100     |");
-                            System.out.println("| Letak           : Rak B   |");
-                            System.out.println("| Baris           : 2       |");
-                            System.out.println("|___________________________|");
+                        case "Harry Potter":
+                            System.out.println("\n _________________________________");
+                            System.out.println("|                                 |");
+                            System.out.println("| Judul Buku      : Harry Potter  |");
+                            System.out.println("| Penulis         : J.K Rowling   |");
+                            System.out.println("| Jumlah Halaman  : 384           |");
+                            System.out.println("| Letak           : Rak B         |");
+                            System.out.println("| Baris           : 2             |");
+                            System.out.println("|_________________________________|");
                             break;
 
-                        case "Buku F":
-                            System.out.println("\n ___________________________");
-                            System.out.println("|                           |");
-                            System.out.println("| Judul Buku      : Buku F  |");
-                            System.out.println("| Penulis         : Si F    |");
-                            System.out.println("| Jumlah Halaman  : 100     |");
-                            System.out.println("| Letak           : Rak B   |");
-                            System.out.println("| Baris           : 3       |");
-                            System.out.println("|___________________________|");
+                        case "Bumi Manusia":
+                            System.out.println("\n _________________________________________");
+                            System.out.println("|                                         |");
+                            System.out.println("| Judul Buku      : Bumi Manusia          |");
+                            System.out.println("| Penulis         : Pramoedya Ananta Toer |");
+                            System.out.println("| Jumlah Halaman  : 535                   |");
+                            System.out.println("| Letak           : Rak B                 |");
+                            System.out.println("| Baris           : 3                     |");
+                            System.out.println("|_________________________________________|");
                             break;
 
                         default:
