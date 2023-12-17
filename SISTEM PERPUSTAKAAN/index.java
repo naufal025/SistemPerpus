@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Date;
 
 public class index {
     // Batas Maksimal Percobaan
@@ -9,11 +8,12 @@ public class index {
         String username, password;
         String[][] login_admin = {{"admin1","pass1"},{"admin2","pass2"},{"admin3","pass3"}};
 
-        System.out.println("---------- ADMIN ----------");
+        System.out.println("-------------- ADMIN ---------------");
         System.out.print("Silahkan Masukkan Username  : ");
         username = input.nextLine();
         System.out.print("Silahkan Masukkan Password  : ");
         password = input.nextLine();
+        System.out.println("-------------------------------------");
         int count = 0; // "count" dimulai dari 0 untuk mengecek apakah username dan password benar
         for(int i = 0; i < login_admin.length; i++){
             if(username.equals(login_admin[i][0]) && password.equals(login_admin[i][1])){ // jika username dan password benar maka "count" akan bernilai 1
@@ -40,11 +40,12 @@ public class index {
         String username, password;
         String[][] login_user = {{"user1","pass1"},{"user2","pass2"},{"user3","pass3"}};
 
-        System.out.println("---------- User ----------");
+        System.out.println("-------------- USER ---------------");
         System.out.print("Silahkan Masukkan Username : ");
         username = input.nextLine();
         System.out.print("Silahkan Masukkan Password : ");
         password = input.nextLine();
+        System.out.println("-------------------------------------");
         int count = 0; // "count" dimulai dari 0 untuk mengecek apakah username dan password benar
         for(int i = 0; i < login_user.length; i++){
             if(username.equals(login_user[i][0]) && password.equals(login_user[i][1])){ // jika username dan password benar maka "count" akan bernilai 1
@@ -55,7 +56,7 @@ public class index {
         if(count == 1){
             System.out.print("Login anda telah berhasil");
             // masukkan konten untuk mengakses fungsi admin
-            menuAdmin();
+            menuUser();
         }else{
             if (maxPercobaan == 2){
                 System.out.println("Batas Percobaan Login Telah Tercapai");
@@ -67,8 +68,8 @@ public class index {
             }
         }
     }
-    
-    public static void main(String[] args) {
+
+    public static void login(){
         Scanner input = new Scanner(System.in);
         String login;
         // Tampilan awal ketika program dijalankan
@@ -98,6 +99,10 @@ public class index {
         }else if(login.equals("3")){
             System.exit(0);
         }
+    }
+    
+    public static void main(String[] args) {
+        login();
 
     }
     public static void menuAdmin(){
@@ -106,18 +111,319 @@ public class index {
         boolean meminjam = false, valid = false;
         int maxBuku = 100, maxAtributBuku = 7, jumlahBuku = 0;
         String[][] perpustakaan = new String[maxBuku][maxAtributBuku];
-        // String[][] dataBuku = {{"Harry Poter","J.K Rowling", "gramedia", "2015", "2312421", "223", "1000","novel"}};
-        // for(int j = 0; j < dataBuku.length; j++){
-        //     perpustakaan[j][0] = dataBuku[j][0];
-        //     perpustakaan[j][1] = dataBuku[j][1];
-        //     perpustakaan[j][2] = dataBuku[j][2];
-        //     perpustakaan[j][3] = dataBuku[j][3];
-        //     perpustakaan[j][4] = dataBuku[j][4];
-        //     perpustakaan[j][5] = dataBuku[j][5];
-        //     perpustakaan[j][6] = dataBuku[j][6];
+        String[][] dataBuku = {{"Harry Poter","J.K Rowling", "gramedia", "2015", "2312421", "223", "1000","novel"},
+                               {"Laskar Pelangi","Andrea Hinata", "gramedia", "2012", "9928113", "529", "1500", "novel"},
+                               {"Attack on Titan","Hajime Isayama", "gramedia", "2009", "8137118", "192", "1250", "komik"},
+                               {"Filosofi Teras","Henry Manampiring", "gramedia", "2001", "3322734", "344", "750", "novel"},
+                               {"Anatomic Habits","Andrea Hinata", "gramedia", "2012", "9928113", "529", "1500", "novel"},
+                              };
+        for(int j = 0; j < dataBuku.length; j++){
+             perpustakaan[j][0] = dataBuku[j][0];
+             perpustakaan[j][1] = dataBuku[j][1];
+             perpustakaan[j][2] = dataBuku[j][2];
+             perpustakaan[j][3] = dataBuku[j][3];
+             perpustakaan[j][4] = dataBuku[j][4];
+             perpustakaan[j][5] = dataBuku[j][5];
+             perpustakaan[j][6] = dataBuku[j][6];
 
-        // }
-        // jumlahBuku = dataBuku.length;
+         }
+        jumlahBuku = dataBuku.length;
+        int i = 0;
+        boolean exitProgram = false;
+        int pilihan, kategori;
+        while (!exitProgram) {
+            input.nextLine();
+
+            System.out.println(" __________________________________");
+            System.out.println("|            DAFTAR MENU           |");
+            System.out.println("|        Sistem Perpustakaan       |");
+            System.out.println("|            Poltek Land           |");
+            System.out.println("|__________________________________|");
+            System.out.println("|                                  |");
+            System.out.println("| 1. Katalog Buku                  |");
+            System.out.println("|__________________________________|");
+            System.out.println("|                                  |");
+            System.out.println("| 2. Cari Buku                     |");
+            System.out.println("|__________________________________|");
+            System.out.println("|                                  |");
+            System.out.println("| 3. Penambahan Buku               |");
+            System.out.println("|__________________________________|");
+            System.out.println("|                                  |");
+            System.out.println("| 4. Tambah Anggota                |");
+            System.out.println("|__________________________________|");
+            System.out.println("|                                  |");
+            System.out.println("| 5. Log Out                       |");
+            System.out.println("|__________________________________|");
+
+            System.out.print("Pilih Menu : ");
+            pilihan = input.nextInt();
+            input.nextLine();
+
+            switch (pilihan) {
+                case 1:
+                    System.out.println("\n______________________________");
+                    System.out.println("______________________________");
+                    System.out.println("        Selamat  Datang       ");
+                    System.out.println("        di Katalog Buku       ");
+                    System.out.println("------------------------------");
+                    System.out.println("      Sistem Perpustakaan     ");
+                    System.out.println("          Poltek Land         ");
+                    System.out.println("______________________________");
+                    System.out.println("\n ______________________");
+                    System.out.println("|     Katalog Buku     |");
+                    System.out.println("|______________________|");
+                    System.out.println("| 1. Novel             |");
+                    System.out.println("| 2. Komik             |");
+                    System.out.println("| 3. Cerpen            |");
+                    System.out.println("| 4. Sejarah           |");
+                    System.out.println("| 5. Ilmu Pengetahuan  |");
+                    System.out.println("|______________________|");
+                    System.out.print("\nMasukkan Kategori Buku: ");
+                    kategori = input.nextInt();
+
+                    if (jumlahBuku > 0) {
+                        for ( i = 0; i < jumlahBuku; i++) {
+                            switch (kategori) {
+                                case 1:
+                                if (perpustakaan[i][6].equalsIgnoreCase("novel")) {
+                                    System.out.println(i+1 + ". " + perpustakaan[i][0]);
+                                } 
+                                break;
+                                
+                            
+                                case 2:
+                                if (perpustakaan[i][6].equalsIgnoreCase("komik")) {
+                                System.out.println(i+1 + ". " + perpustakaan[i][0]);
+                                input.nextLine();
+                                }
+                        
+                                break;
+
+                                case 3:
+                                if (perpustakaan[i][6].equalsIgnoreCase("cerpen")) {
+                                System.out.println(i+1 + ". " + perpustakaan[i][0]);
+                                input.nextLine();
+                                }
+                                break;
+
+                                
+                                default:
+                                System.out.println("Kategori Tidak Tersedia");
+                                break;
+                            }
+                            
+                        }
+                    } else {
+                        System.out.println("\n=================================");
+                        System.out.println(" Belum ada buku yang ditambahkan ");
+                        System.out.println("=================================");
+                    }
+
+                    System.out.println("\n ______________________________________");
+                    System.out.println("|                                      |");
+                    System.out.println("|  Tekan ENTER untuk kembali ke Menu   |");
+                    System.out.println("|______________________________________|");
+                  input.nextLine();
+                    break;
+
+                case 2:
+                    System.out.println("\n______________________________");
+                    System.out.println("______________________________");
+                    System.out.println("        Selamat Datang        ");
+                    System.out.println("         di Cari Buku         ");
+                    System.out.println("------------------------------");
+                    System.out.println("      Sistem Perpustakaan     ");
+                    System.out.println("          Poltek Land         ");
+                    System.out.println("______________________________");
+                    System.out.print("\nMasukkan Nama Buku: ");
+                    String namaBuku = input.nextLine();
+                    switch (namaBuku) {
+                        case "Laskar Pelangi":
+                        System.out.println("\n ___________________________________");
+                        System.out.println("|                                   |");
+                        System.out.println("| Judul Buku      : Laskar Pelangi  |");
+                        System.out.println("| Penulis         : Andrea Hinata   |");
+                        System.out.println("| Jumlah Halaman  : 529             |");
+                        System.out.println("| Letak           : Rak A           |");
+                        System.out.println("| Baris           : 1               |");
+                        System.out.println("|___________________________________|");
+                        break;
+
+                    case "Attack On Titan":
+                        System.out.println("\n ___________________________________");
+                        System.out.println("|                                   |");
+                        System.out.println("| Judul Buku      : Attack On Titan |");
+                        System.out.println("| Penulis         : Hajime Isayama  |");
+                        System.out.println("| Jumlah Halaman  : 192             |");
+                        System.out.println("| Letak           : Rak A           |");
+                        System.out.println("| Baris           : 2               |");
+                        System.out.println("|___________________________________|");
+                        break;
+
+                    case "Filosofi Teras":
+                        System.out.println("\n _____________________________________");
+                        System.out.println("|                                     |");
+                        System.out.println("| Judul Buku      : Filosofi Teras    |");
+                        System.out.println("| Penulis         : Henry Manampiring |");
+                        System.out.println("| Jumlah Halaman  : 344               |");
+                        System.out.println("| Letak           : Rak A             |");
+                        System.out.println("| Baris           : 3                 |");
+                        System.out.println("|_____________________________________|");
+                        break;
+
+                    case "Anatomic Habits":
+                        System.out.println("\n ____________________________________");
+                        System.out.println("|                                    |");
+                        System.out.println("| Judul Buku      : Anatomic Habits  |");
+                        System.out.println("| Penulis         : Clear James      |");
+                        System.out.println("| Jumlah Halaman  : 352              |");
+                        System.out.println("| Letak           : Rak B            |");
+                        System.out.println("| Baris           : 1                |");
+                        System.out.println("|____________________________________|");
+                        break;
+
+                    case "Harry Potter":
+                        System.out.println("\n _________________________________");
+                        System.out.println("|                                 |");
+                        System.out.println("| Judul Buku      : Harry Potter  |");
+                        System.out.println("| Penulis         : J.K Rowling   |");
+                        System.out.println("| Jumlah Halaman  : 384           |");
+                        System.out.println("| Letak           : Rak B         |");
+                        System.out.println("| Baris           : 2             |");
+                        System.out.println("|_________________________________|");
+                        break;
+
+                    case "Bumi Manusia":
+                        System.out.println("\n _________________________________________");
+                        System.out.println("|                                         |");
+                        System.out.println("| Judul Buku      : Bumi Manusia          |");
+                        System.out.println("| Penulis         : Pramoedya Ananta Toer |");
+                        System.out.println("| Jumlah Halaman  : 535                   |");
+                        System.out.println("| Letak           : Rak B                 |");
+                        System.out.println("| Baris           : 3                     |");
+                        System.out.println("|_________________________________________|");
+                        break;
+
+
+                        default:
+                            System.out.println("\n====================================");
+                            System.out.println(" buku yang Anda cari tidak tersedia ");
+                            System.out.println("====================================");
+                    }
+                    System.out.println("\n ______________________________________");
+                    System.out.println("|                                      |");
+                    System.out.println("|  Tekan ENTER untuk kembali ke Menu   |");
+                    System.out.println("|______________________________________|");
+                    break;
+
+                case 3:
+                System.out.println("\n______________________________");
+                    System.out.println("______________________________");
+                    System.out.println("        Selamat Datang        ");
+                    System.out.println("        di Tambah Buku        ");
+                    System.out.println("------------------------------");
+                    System.out.println("     Sistem Perpustakaan      ");
+                    System.out.println("         Poltek Land          ");
+                    System.out.println("______________________________");
+                    String tambahLagi;
+                    while (true) {
+                        if (jumlahBuku < maxBuku) {
+
+                            System.out.print("Judul          : ");
+                            perpustakaan[jumlahBuku][0] = input.nextLine();
+                            System.out.print("Penulis        : ");
+                            perpustakaan[jumlahBuku][1] = input.nextLine();
+                            System.out.print("Penerbit       : ");
+                            perpustakaan[jumlahBuku][2] = input.nextLine();
+                            System.out.print("Tahun Terbit   : ");
+                            perpustakaan[jumlahBuku][3] = input.nextLine();
+                            System.out.print("ISBN           : ");
+                            perpustakaan[jumlahBuku][4] = input.nextLine();
+                            System.out.print("Jumlah Halaman : ");
+                            perpustakaan[jumlahBuku][5] = input.nextLine();
+                            System.out.print("Genre Buku     : ");
+                            perpustakaan[jumlahBuku][6] = input.nextLine();
+                        
+
+                            System.out.println("\n============================");
+                            System.out.println(" Buku berhasil ditambahkan!");
+                            System.out.println("============================");
+                            jumlahBuku++;
+
+                            System.out.print("\nApakah Anda ingin menambahkan buku lagi (y/n)? ");
+                            tambahLagi = input.nextLine();
+                            if (tambahLagi.equalsIgnoreCase("n")) {
+                            System.out.println("\n ______________________________________");
+                            System.out.println("|                                      |");
+                            System.out.println("|  Tekan ENTER untuk kembali ke Menu   |");
+                            System.out.println("|______________________________________|");
+                            break;
+                            }
+                        }
+                    }
+            
+                case 4:
+                    System.out.println("\n______________________________");
+                    System.out.println("______________________________  ");
+                    System.out.println("        Selamat Datang        ");
+                    System.out.println("       di Tambah Anggota      ");
+                    System.out.println("------------------------------");
+                    System.out.println("      Sistem Perpustakaan      ");
+                    System.out.println("          Poltek Land          ");
+                    System.out.println("_______________________________");
+
+                case 5:
+                    System.out.println("Apakah anda ingin melakukan transaksi lagi ? (Y/T)");
+                    String ulang = input.nextLine();
+                    if (ulang.equalsIgnoreCase("Y")){
+                        login();
+                    } else {
+                    System.out.println("\n_______________________________");
+                    System.out.println("_______________________________");
+                    System.out.println("       Log Out Berhasil !      ");
+                    System.out.println(" Terimakasih Telah Menggunakan ");
+                    System.out.println("-------------------------------");
+                    System.out.println("      Sistem Perpustakaan      ");
+                    System.out.println("          Poltek Land          ");
+                    System.out.println("_______________________________");
+                    System.exit(0);
+                    }
+                    default:
+                    System.out.println("==========================================");
+                    System.out.println(" Menu tidak tersedia, Silahkan pilih lagi ");
+                    System.out.println("==========================================");
+                    input.nextLine();
+                    break;          
+                    }
+
+                }
+            }
+    
+                   
+    
+        public static void menuUser(){
+        Scanner input = new Scanner(System.in);
+
+        boolean meminjam = false, valid = false;
+        int maxBuku = 100, maxAtributBuku = 7, jumlahBuku = 0;
+        String[][] perpustakaan = new String[maxBuku][maxAtributBuku];
+        String[][] dataBuku = {{"Harry Poter","J.K Rowling", "gramedia", "2015", "2312421", "223", "1000","novel"},
+                               {"Laskar Pelangi","Andrea Hinata", "gramedia", "2012", "9928113", "529", "1500", "novel"},
+                               {"Attack on Titan","Hajime Isayama", "gramedia", "2009", "8137118", "192", "1250", "komik"},
+                               {"Filosofi Teras","Henry Manampiring", "gramedia", "2001", "3322734", "344", "750", "novel"},
+                               {"Anatomic Habits","Andrea Hinata", "gramedia", "2012", "9928113", "529", "1500", "novel"},
+                              };
+        for(int j = 0; j < dataBuku.length; j++){
+             perpustakaan[j][0] = dataBuku[j][0];
+             perpustakaan[j][1] = dataBuku[j][1];
+             perpustakaan[j][2] = dataBuku[j][2];
+             perpustakaan[j][3] = dataBuku[j][3];
+             perpustakaan[j][4] = dataBuku[j][4];
+             perpustakaan[j][5] = dataBuku[j][5];
+             perpustakaan[j][6] = dataBuku[j][6];
+
+         }
+         jumlahBuku = dataBuku.length;
         int i = 0;
         boolean exitProgram = false;
         int pilihan, kategori;
@@ -186,8 +492,7 @@ public class index {
                                 case 1:
                                 if (perpustakaan[i][6].equalsIgnoreCase("novel")) {
                                     System.out.println(i+1 + ". " + perpustakaan[i][0]);
-                                
-                                
+                            
                                 } 
                                 break;
                                 
@@ -202,6 +507,20 @@ public class index {
 
                                 case 3:
                                 if (perpustakaan[i][6].equalsIgnoreCase("cerpen")) {
+                                System.out.println(i+1 + ". " + perpustakaan[i][0]);
+                                input.nextLine();
+                                }
+                                break;
+
+                                case 4:
+                                if (perpustakaan[i][6].equalsIgnoreCase("sejarah")) {
+                                System.out.println(i+1 + ". " + perpustakaan[i][0]);
+                                input.nextLine();
+                                }
+                                break;
+
+                                case 5:
+                                if (perpustakaan[i][6].equalsIgnoreCase("ilmu pengetahuan")) {
                                 System.out.println(i+1 + ". " + perpustakaan[i][0]);
                                 input.nextLine();
                                 }
@@ -240,70 +559,71 @@ public class index {
                     String namaBuku = input.nextLine();
                     switch (namaBuku) {
                         case "Laskar Pelangi":
-                            System.out.println("\n ___________________________________");
-                            System.out.println("|                                   |");
-                            System.out.println("| Judul Buku      : Laskar Pelangi  |");
-                            System.out.println("| Penulis         : Andrea Hinata   |");
-                            System.out.println("| Jumlah Halaman  : 529             |");
-                            System.out.println("| Letak           : Rak A           |");
-                            System.out.println("| Baris           : 1               |");
-                            System.out.println("|___________________________________|");
-                            break;
+                        System.out.println("\n ___________________________________");
+                        System.out.println("|                                   |");
+                        System.out.println("| Judul Buku      : Laskar Pelangi  |");
+                        System.out.println("| Penulis         : Andrea Hinata   |");
+                        System.out.println("| Jumlah Halaman  : 529             |");
+                        System.out.println("| Letak           : Rak A           |");
+                        System.out.println("| Baris           : 1               |");
+                        System.out.println("|___________________________________|");
+                        break;
 
-                        case "Attack On Titan":
-                            System.out.println("\n ___________________________________");
-                            System.out.println("|                                   |");
-                            System.out.println("| Judul Buku      : Attack On Titan |");
-                            System.out.println("| Penulis         : Hajime Isayama  |");
-                            System.out.println("| Jumlah Halaman  : 192             |");
-                            System.out.println("| Letak           : Rak A           |");
-                            System.out.println("| Baris           : 2               |");
-                            System.out.println("|___________________________________|");
-                            break;
+                    case "Attack On Titan":
+                        System.out.println("\n ___________________________________");
+                        System.out.println("|                                   |");
+                        System.out.println("| Judul Buku      : Attack On Titan |");
+                        System.out.println("| Penulis         : Hajime Isayama  |");
+                        System.out.println("| Jumlah Halaman  : 192             |");
+                        System.out.println("| Letak           : Rak A           |");
+                        System.out.println("| Baris           : 2               |");
+                        System.out.println("|___________________________________|");
+                        break;
 
-                        case "Filosofi Teras":
-                            System.out.println("\n _____________________________________");
-                            System.out.println("|                                     |");
-                            System.out.println("| Judul Buku      : Filosofi Teras    |");
-                            System.out.println("| Penulis         : Henry Manampiring |");
-                            System.out.println("| Jumlah Halaman  : 344               |");
-                            System.out.println("| Letak           : Rak A             |");
-                            System.out.println("| Baris           : 3                 |");
-                            System.out.println("|_____________________________________|");
-                            break;
+                    case "Filosofi Teras":
+                        System.out.println("\n _____________________________________");
+                        System.out.println("|                                     |");
+                        System.out.println("| Judul Buku      : Filosofi Teras    |");
+                        System.out.println("| Penulis         : Henry Manampiring |");
+                        System.out.println("| Jumlah Halaman  : 344               |");
+                        System.out.println("| Letak           : Rak A             |");
+                        System.out.println("| Baris           : 3                 |");
+                        System.out.println("|_____________________________________|");
+                        break;
 
-                        case "Anatomic Habits":
-                            System.out.println("\n ____________________________________");
-                            System.out.println("|                                    |");
-                            System.out.println("| Judul Buku      : Anatomic Habits  |");
-                            System.out.println("| Penulis         : Clear James      |");
-                            System.out.println("| Jumlah Halaman  : 352              |");
-                            System.out.println("| Letak           : Rak B            |");
-                            System.out.println("| Baris           : 1                |");
-                            System.out.println("|____________________________________ww|");
-                            break;
+                    case "Anatomic Habits":
+                        System.out.println("\n ____________________________________");
+                        System.out.println("|                                    |");
+                        System.out.println("| Judul Buku      : Anatomic Habits  |");
+                        System.out.println("| Penulis         : Clear James      |");
+                        System.out.println("| Jumlah Halaman  : 352              |");
+                        System.out.println("| Letak           : Rak B            |");
+                        System.out.println("| Baris           : 1                |");
+                        System.out.println("|____________________________________ww|");
+                        break;
 
-                        case "Harry Potter":
-                            System.out.println("\n _________________________________");
-                            System.out.println("|                                 |");
-                            System.out.println("| Judul Buku      : Harry Potter  |");
-                            System.out.println("| Penulis         : J.K Rowling   |");
-                            System.out.println("| Jumlah Halaman  : 384           |");
-                            System.out.println("| Letak           : Rak B         |");
-                            System.out.println("| Baris           : 2             |");
-                            System.out.println("|_________________________________|");
-                            break;
+                    case "Harry Potter":
+                        System.out.println("\n _________________________________");
+                        System.out.println("|                                 |");
+                        System.out.println("| Judul Buku      : Harry Potter  |");
+                        System.out.println("| Penulis         : J.K Rowling   |");
+                        System.out.println("| Jumlah Halaman  : 384           |");
+                        System.out.println("| Letak           : Rak B         |");
+                        System.out.println("| Baris           : 2             |");
+                        System.out.println("|_________________________________|");
+                        break;
 
-                        case "Bumi Manusia":
-                            System.out.println("\n _________________________________________");
-                            System.out.println("|                                         |");
-                            System.out.println("| Judul Buku      : Bumi Manusia          |");
-                            System.out.println("| Penulis         : Pramoedya Ananta Toer |");
-                            System.out.println("| Jumlah Halaman  : 535                   |");
-                            System.out.println("| Letak           : Rak B                 |");
-                            System.out.println("| Baris           : 3                     |");
-                            System.out.println("|_________________________________________|");
-                            break;
+                    case "Bumi Manusia":
+                        System.out.println("\n _________________________________________");
+                        System.out.println("|                                         |");
+                        System.out.println("| Judul Buku      : Bumi Manusia          |");
+                        System.out.println("| Penulis         : Pramoedya Ananta Toer |");
+                        System.out.println("| Jumlah Halaman  : 535                   |");
+                        System.out.println("| Letak           : Rak B                 |");
+                        System.out.println("| Baris           : 3                     |");
+                        System.out.println("|_________________________________________|");
+                        break;
+
 
                         default:
                             System.out.println("\n====================================");
@@ -317,10 +637,11 @@ public class index {
                     break;
 
                 case 3:
-                    String tanggalPeminjaman, tanggalPengembalian, namaPenulis, nama;
+                    String tanggalPeminjaman [][] = new String[31][12];
+                    String namaPenulis, nama,tanggalPengembalian;
                     int banyakBuku, maxPinjam = 5;
 
-                    System.out.println("\n______________________________");
+                    System.out.println("______________________________");
                     System.out.println("______________________________");
                     System.out.println("        Selamat Datang        ");
                     System.out.println("      di Peminjaman Buku      ");
@@ -329,14 +650,17 @@ public class index {
                     System.out.println("          Poltek Land         ");
                     System.out.println("______________________________");
 
-                    System.out.print("\nMasukkan Nama Anda            : ");
+                    System.out.print("Masukkan Nama Anda            : ");
                     String namaPeminjam = input.nextLine();
 
                     for (i = 0; i < maxPinjam; i++) {
-                        System.out.print("\nMasukkan Nama Buku            : ");
+                        System.out.print("Masukkan Nama Buku             : ");
                         namaBuku = input.nextLine();
-                        System.out.print("Masukkan Nama Penulis           : ");
+                        System.out.print("Masukkan Nama Penulis          : ");
                         namaPenulis = input.nextLine();
+                         for (int j = 0; j < maxPinjam; j++) {
+                         System.out.println("Masukkan Tanggal Peminjaman : ");
+                         tanggalPeminjaman[i][j] = input.nextLine();
                         if (namaBuku.equalsIgnoreCase(perpustakaan[i][0])
                                 && namaPenulis.equalsIgnoreCase(perpustakaan[i][1])) {
                             meminjam = true;
@@ -345,14 +669,11 @@ public class index {
                             System.out.println("Buku tidak tersedia");
                             meminjam = false;
                             valid = false;
-
                             i++;
                         }
                         if (meminjam) {
                             meminjam = true;
                             valid = true;
-                            Date tanggalPinjam = new Date();
-
                             System.out.println("\n______________________________________________");
                             System.out.println("\n           Buku pinjaman ke-" + (i + 1));
                             System.out.println(" Nama Peminjam              : " + namaPeminjam);
@@ -365,7 +686,6 @@ public class index {
                             String pinjamLagi = input.nextLine();
                             if (pinjamLagi.equalsIgnoreCase("n")) {
                                 break;
-
                             }
 
                         }
@@ -395,12 +715,17 @@ public class index {
                     System.out.println("         Poltek Land          ");
                     System.out.println("______________________________");
                     System.out.println(" ");
+                    System.out.println("________________________________________");
                     System.out.print("\nMasukkan Nama Peminjam            : ");
                     nama = input.nextLine();
+                    System.out.println("Masukkan Tanggal hari ini         : ");
+                    int hari = input.nextInt();
                     System.out.print("Masukkan Judul Buku yang Dipinjam   : ");
                     namaBuku = input.nextLine();
                     System.out.print("Masukkan Tanggal Pengembalian       : ");
                     tanggalPengembalian = input.nextLine();
+                    //fitur denda
+                    System.out.println("________________________________________");
                     System.out.println("\n__________________________________________________");
                     System.out.println("                 Terimakasih Telah                ");
                     System.out.println("            Melakukan Pengembalian Buku           ");
@@ -456,108 +781,6 @@ public class index {
                     break;
 
                 case 6:
-                    int hargaBuku = 0, potHarga, hargaBayar;
-                    double disc;
-                    String beli, berlangganan;
-                    System.out.println("\n______________________________");
-                    System.out.println("______________________________");
-                    System.out.println("        Selamat Datang        ");
-                    System.out.println("       di Tambah Anggota      ");
-                    System.out.println("------------------------------");
-                    System.out.println("      Sistem Perpustakaan      ");
-                    System.out.println("          Poltek Land          ");
-                    System.out.println("______________________________");
-
-                    System.out.print("\nMasukkan Nama Buku    : ");
-                    namaBuku = input.nextLine();
-                    System.out.print("Masukkan Nama Penulis   : ");
-                    namaPenulis = input.nextLine();
-                    if (namaBuku.equalsIgnoreCase("Buku A") && namaPenulis.equalsIgnoreCase("Penulis A")) {
-                        hargaBuku += 50000;
-
-                    } else if (namaBuku.equalsIgnoreCase("Buku B") && namaPenulis.equalsIgnoreCase("Penulis B")) {
-                        hargaBuku += 70000;
-
-                    } else if (namaBuku.equalsIgnoreCase("Buku C") && namaPenulis.equalsIgnoreCase("Penulis C")) {
-                        hargaBuku += 85000;
-
-                    } else if (namaBuku.equalsIgnoreCase("Buku D") && namaPenulis.equalsIgnoreCase("Penulis D")) {
-                        hargaBuku += 62000;
-
-                    } else if (namaBuku.equalsIgnoreCase("Buku E") && namaPenulis.equalsIgnoreCase("Penulis E")) {
-                        hargaBuku += 380000;
-
-                    } else if (namaBuku.equalsIgnoreCase("Buku F") && namaPenulis.equalsIgnoreCase("Penulis F")) {
-                        hargaBuku += 55000;
-
-                    } else if (namaBuku.equalsIgnoreCase("Buku G") && namaPenulis.equalsIgnoreCase("Penulis G")) {
-                        hargaBuku += 45000;
-
-                    } else if (namaBuku.equalsIgnoreCase("Buku H") && namaPenulis.equalsIgnoreCase("Penulis H")) {
-                        hargaBuku += 40000;
-
-                    } else {
-                        System.out.println("\n _____________________");
-                        System.out.println("|                     |");
-                        System.out.println("| Buku tidak tersedia |");
-                        System.out.println("|_____________________|");
-                        System.out.println("\n ______________________________________");
-                        System.out.println("|                                      |");
-                        System.out.println("|  Tekan ENTER untuk kembali ke Menu   |");
-                        System.out.println("|______________________________________|");
-                        break;
-                    }
-
-                    System.out.print("\nApakah Anda ingin membeli buku ini (ya/tidak) ? ");
-                    beli = input.nextLine();
-
-                    if (beli.equals("ya")) {
-                        System.out.print("\nApakah Anda berlangganan (ya/tidak) ? ");
-                        berlangganan = input.nextLine();
-                        if (berlangganan.equals("ya")) {
-                            disc = 0.2;
-                            potHarga = (int) (hargaBuku * disc);
-                            hargaBayar = (int) (hargaBuku - potHarga);
-
-                            System.out.println("\n_________________________________________________________________");
-                            System.out.println("                         Terimakasih Telah                       ");
-                            System.out.println("                     Melakukan Pembelian Buku                   ");
-                            System.out.println("=================================================================");
-                            System.out.println(" Selamat Anda Mendapatkan Potongan Harga sebesar     = " + potHarga);
-                            System.out.println(" Harga Buku yang harus Anda bayarkan sebesar         = " + hargaBayar);
-                            System.out.println("=================================================================");
-                            System.out.println("\n ______________________________________");
-                            System.out.println("|                                      |");
-                            System.out.println("|  Tekan ENTER untuk kembali ke Menu   |");
-                            System.out.println("|______________________________________|");
-                            break;
-
-                        } else if (berlangganan.equals("tidak"))
-                            System.out.println("\n_________________________________________________");
-                        System.out.println("                Terimakasih Telah                ");
-                        System.out.println("           Melakukan Pengembalian Buku           ");
-                        System.out.println("=================================================");
-                        System.out.println(" Harga Buku yang Harus Anda Bayarkan : " + hargaBuku);
-                        System.out.println("=================================================");
-                        System.out.println("\n ______________________________________");
-                        System.out.println("|                                      |");
-                        System.out.println("|  Tekan ENTER untuk kembali ke Menu   |");
-                        System.out.println("|______________________________________|");
-                        break;
-
-                    } else if (beli.equals("tidak")) {
-                        System.out.println("\n ______________________________________");
-                        System.out.println("|                                      |");
-                        System.out.println("|  Tekan ENTER untuk kembali ke Menu   |");
-                        System.out.println("|______________________________________|");
-                        break;
-
-                    } else {
-                        System.out.println(" Mohon Ketikkan 'ya' atau 'tidak' !!!");
-                        break;
-                    }
-
-                case 7:
                     System.out.println("\n______________________________");
                     System.out.println("______________________________");
                     System.out.println("        Selamat Datang        ");
@@ -609,7 +832,12 @@ public class index {
 
                     break;
 
-                case 8:
+                case 7:
+                    System.out.println("Apakah anda ingin melakukan transaksi lagi ? (Y/T)");
+                    String ulang = input.nextLine();
+                    if (ulang.equalsIgnoreCase("Y")){
+                    login();
+                    } else {
                     System.out.println("\n_______________________________");
                     System.out.println("_______________________________");
                     System.out.println("       Log Out Berhasil !      ");
@@ -619,13 +847,13 @@ public class index {
                     System.out.println("          Poltek Land          ");
                     System.out.println("_______________________________");
                     System.exit(0);
-                    break;
-                default:
+                    }
+                    default:
                     System.out.println("==========================================");
                     System.out.println(" Menu tidak tersedia, Silahkan pilih lagi ");
                     System.out.println("==========================================");
                     input.nextLine();
-                    break;
+                    break;          
             }
         }
         input.close();
