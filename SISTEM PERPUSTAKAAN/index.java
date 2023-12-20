@@ -4,11 +4,11 @@ import java.util.Date;
 public class index {
     static Scanner input = new Scanner(System.in);
 
-    // note: rek kalau semisal mau deklarasi variable terus saling berhubungan dengan fitur lain deklarasino disini yo.... (aziz)
+    
     static int jumlahBuku = 0; // jumlah buku awal
     static int maxBuku = 100; // Batas Maksimal Buku
     static int maxAtributBuku = 8; // Batas Maksimal Atribut
-    static String novel = "Novel", komik = "Komik", cerpen = "Cerpen", sejarah = "Sejarah", ilmuPengetahuan = "Ilmu Pengetahuan", purchasable = "Purchasable";
+    static String novel = "Novel", komik = "Komik", cerpen = "Cerpen", sejarah = "Sejarah", ilmuPengetahuan = "Ilmu Pengetahuan";
     static boolean[] bukuTersedia = new boolean[maxBuku];
 
     static String nama, namaBuku; // nama buku untuk peminjaman
@@ -35,10 +35,11 @@ public class index {
         String[][] login_admin = {{"admin1","pass1"},{"admin2","pass2"},{"admin3","pass3"}};
 
         System.out.println("---------- ADMIN ----------");
-        System.out.print("Silahkan Masukkan Username Terlebih dauhulu : ");
+        System.out.print("Silahkan Masukkan Username : ");
         username = input.nextLine();
         System.out.print("Silahkan Masukkan Password : ");
         password = input.nextLine();
+         System.out.println("---------------------------");
         int count = 0; // "count" dimulai dari 0 untuk mengecek apakah username dan password benar
         for(int i = 0; i < login_admin.length; i++){
             if(username.equals(login_admin[i][0]) && password.equals(login_admin[i][1])){ // jika username dan password benar maka "count" akan bernilai 1
@@ -67,10 +68,11 @@ public class index {
         String[][] login_user = {{"user1","pass1"},{"user2","pass2"},{"user3","pass3"}};
 
         System.out.println("---------- User ----------");
-        System.out.print("Silahkan Masukkan Username Terlebih dauhulu : ");
+        System.out.print("Silahkan Masukkan Username : ");
         username = input.nextLine();
         System.out.print("Silahkan Masukkan Password : ");
         password = input.nextLine();
+        System.out.println("---------------------------");
         int count = 0; // "count" dimulai dari 0 untuk mengecek apakah username dan password benar
         for(int i = 0; i < login_user.length; i++){
             if(username.equals(login_user[i][0]) && password.equals(login_user[i][1])){ // jika username dan password benar maka "count" akan bernilai 1
@@ -106,8 +108,6 @@ public class index {
         perpustakaan[0][6] = novel;
         bukuTersedia[0] = true;
 
-
-
         perpustakaan[1][0] = "Naruto Vol 1";
         perpustakaan[1][1] = "Masashi Kishimoto";
         perpustakaan[1][2] = "Alex Media";
@@ -117,20 +117,14 @@ public class index {
         perpustakaan[1][6] = komik;
         bukuTersedia[1] = true;
 
-
-
-        perpustakaan[2][0] = "Gagal Menjadi Manusia";
+        perpustakaan[2][0] = "Coding Jago Java";
         perpustakaan[2][1] = "Osamu Dazai";
         perpustakaan[2][2] = "Gramedia";
         perpustakaan[2][3] = "2000";
         perpustakaan[2][4] = "333";
         perpustakaan[2][5] = "700";
-        perpustakaan[2][6] = purchasable;
-        perpustakaan[2][7] = "Rp100.000,00";
+        perpustakaan[2][6] = ilmuPengetahuan;
         bukuTersedia[2] = true;
-
-
-
 
         perpustakaan[3][0] = "Detective Conan";
         perpustakaan[3][1] = "Aoyama Gosho";
@@ -138,12 +132,10 @@ public class index {
         perpustakaan[3][3] = "2020";
         perpustakaan[3][4] = "444";
         perpustakaan[3][5] = "50";
-        perpustakaan[3][6] = purchasable;
-        perpustakaan[3][7] = "Rp75.000,00";
+        perpustakaan[3][6] = sejarah;
         bukuTersedia[3] = true;
 
-        
-        
+
     }
     public static void main(String[] args) {
         defaultData();
@@ -153,7 +145,7 @@ public class index {
         System.out.println("");
         System.out.println("          Selamat Datang          ");
         System.out.println("      Di Sistem Perpustakaan      ");
-        System.out.println("        Pangeran Diponegoro       ");
+        System.out.println("          {Poltek Land}             ");
         System.out.println("");
         System.out.println("__________________________________");
 
@@ -180,10 +172,10 @@ public class index {
         System.out.println(" _____________________________________________________________________");
         System.out.println("|                             DAFTAR MENU                             |");
         System.out.println("|                         Sistem Perpustakaan                         |");
-        System.out.println("|                         Pangeran Diponegoro                         |");
+        System.out.println("|                             {Poltek Land}                            |");
         System.out.println("|__________________________________"+"___________________________________|");
         System.out.println("|                                  |"+"                                  |");
-        System.out.println("| 1. Katalog Buku                  |"+" 6. Form Pembelian Buku           |");
+        System.out.println("| 1. Katalog Buku                  |"+" 6. Penambahan Anggota            |");
         System.out.println("|__________________________________|"+"__________________________________|");
         System.out.println("|                                  |"+"                                  |");
         System.out.println("| 2. Cari Buku                     |"+" 7. Penambahan Buku               |");
@@ -217,7 +209,7 @@ public class index {
             case 5:
                 pengembalianBuku();
             case 6:
-                Pembelian();
+                TambahAnggota();
                 break;
             case 7:
             PenambahanBuku();
@@ -241,7 +233,7 @@ public class index {
         System.out.println("        di Katalog Buku       ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("      Pangeran Diponegoro     ");
+        System.out.println("         {Poltek Land}        ");
         System.out.println("______________________________");
         System.out.println("\n ______________________");
         System.out.println("|     Katalog Buku     |");
@@ -251,13 +243,12 @@ public class index {
         System.out.println("| 3. Cerpen            |");
         System.out.println("| 4. Sejarah           |");
         System.out.println("| 5. Ilmu Pengetahuan  |");
-        System.out.println("| 6. Purchasable       |");
         System.out.println("|______________________|");
         
 
-        System.out.print("\nMasukkan Kategori Buku (1/2/3/4/5/6): ");
+        System.out.print("\nMasukkan Kategori Buku (1/2/3/4/5): ");
         int kategori = input.nextInt();
-        if(kategori > 6 || kategori == 0){
+        if(kategori > 5 || kategori == 0){
             System.out.println("Kategori Tidak Tersedia");
         }else if(kategori > 0 && kategori < 7){
             if(jumlahBuku > 0){
@@ -297,13 +288,6 @@ public class index {
                         if(perpustakaan[i][6] == ilmuPengetahuan){          // Cara agar buku yang ditambahkan sesuai dengan kategori yang diinginkan atribut ke 6 adalah genre / kategori buku
                             System.out.printf("| %-25s | %-20s | %-15s | %-13s | %-15s | %-15s | %-17s |", perpustakaan[i][0], perpustakaan[i][1], perpustakaan[i][2], perpustakaan[i][3], perpustakaan[i][4], perpustakaan[i][5], (bukuTersedia[i] ? "Tersedia" : "Tidak Tersedia"));
                             System.out.println();
-                        }
-                        break;
-                        case 6:
-                        if (perpustakaan[i][6] == purchasable) {
-                            System.out.printf("| %-25s | %-20s | %-15s | %-13s | %-15s | %-15s | %-17s |", perpustakaan[i][0], perpustakaan[i][1], perpustakaan[i][2], perpustakaan[i][3], perpustakaan[i][4], perpustakaan[i][5], (bukuTersedia[i] ? "Tersedia" : "Tidak Tersedia"));
-                            System.out.println();
-                        
                         }
                         break;
                         default:
@@ -353,7 +337,7 @@ public class index {
         System.out.println("        di Pencarian Buku    ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("      Pangeran Diponegoro     ");
+        System.out.println("         {Poltek Land}        ");
         System.out.println("______________________________");
     
         input.nextLine(); // Membersihkan buffer
@@ -403,7 +387,7 @@ public class index {
         System.out.println("      di Peminjaman Buku      ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("      Pangeran Diponegoro     ");
+        System.out.println("         {Poltek Land}        ");
         System.out.println("______________________________");
 
         System.out.print("\nMasukkan Nama Anda            : ");
@@ -412,7 +396,7 @@ public class index {
 
         boolean meminjam = true;
         while (meminjam) {
-            System.out.print("\nMasukkan Kode Buku            : ");
+            System.out.print("\nMasukkan Nama Buku        : ");
             namaBuku = input.nextLine();
             boolean bukuDitemukan = false;
         for (int i = 0; i < maxPinjam; i++) {
@@ -460,7 +444,7 @@ public class index {
         System.out.println("    di Pengembalian Buku      ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("      Pangeran Diponegoro     ");
+        System.out.println("       {Poltek Land}          ");
         System.out.println("______________________________");
 
         System.out.print("\nMasukkan Nama Anda            : ");
@@ -499,12 +483,12 @@ public class index {
                 System.out.println(" Nama Peminjam            : " + nama);
                 System.out.println(" Nama Buku                : " + perpustakaan[i][0]);
                 System.out.println(" Nama Penulis             : " + perpustakaan[i][1]);
-                System.out.println(" Tanggal Pengembalian      : " + tanggalPengembalian);
+                System.out.println(" Tanggal Pengembalian     : " + tanggalPengembalian);
                 System.out.println("______________________________________________");
                 }
                 else {
-                    int denda = (int) ((selisihHari - 7) * 5000);
-                    System.out.println("\n______________________________________________");
+                int denda = (int) ((selisihHari - 7) * 5000);
+                System.out.println("\n______________________________________________");
                 System.out.println(" Nama Peminjam         : " + nama);
                 System.out.println(" Nama Buku             : " + perpustakaan[i][0]);
                 System.out.println(" Nama Penulis          : " + perpustakaan[i][1]);
@@ -587,9 +571,8 @@ public class index {
             System.out.println("| 3. Cerpen            |");
             System.out.println("| 4. Sejarah           |");
             System.out.println("| 5. Ilmu Pengetahuan  |");
-            System.out.println("| 6. Purchasable       |");
             System.out.println("|______________________|");
-            System.out.print("Silahkan Pilih Genre Buku (1/2/3/4/5/6/):");
+            System.out.print("Silahkan Pilih Genre Buku (1/2/3/4/5/):");
             int genreBuku = input.nextInt();
             switch (genreBuku){
                 case 1:
@@ -607,12 +590,7 @@ public class index {
                 case 5:
                     perpustakaan[jumlahBuku][6] = ilmuPengetahuan;
                     break;
-                case 6:
-                    perpustakaan[jumlahBuku][6] = purchasable;
-                    System.out.print("Masukkan Harga Buku:");
-                    input.nextLine();
-                    perpustakaan[jumlahBuku][7] = input.next();
-                    break;
+               
                 default:
                     System.out.println("Pilihan tidak valid. Silakan pilih lagi.");
                     return;
@@ -664,15 +642,14 @@ public class index {
         System.out.println("____________________________________");
         System.out.println("|           Fitur Riwayat          |");
         System.out.println("|==================================|");
-        System.out.println("| Perpustakaan Pangeran Diponegoro |");
+        System.out.println("|      Perpustakaan Poltek Land    |");
         System.out.println("|                                  |");
         System.out.println("| 1. Riwayat Penambahan Buku       |");
         System.out.println("| 2. Riwayat Peminjaman Buku       |");
         System.out.println("| 3. Riwayat Pengembalian Buku     |");
-        System.out.println("| 4. Riwayat Pembelian Buku        |");
-        System.out.println("| 5. Kembali ke Menu Utama         |");
+        System.out.println("| 4. Kembali ke Menu Utama         |");
         System.out.println("|__________________________________|");
-        System.out.print("Pilih Menu (1/2/3/4/5): ");
+        System.out.print("Pilih Menu (1/2/3/4): ");
         int pilihan = input.nextInt();
 
         switch (pilihan) {
@@ -686,90 +663,23 @@ public class index {
                 RiwayatPengembalian();
                 break;
             case 4:
-                RiwayatPembelian();
-                break;
-            case 5:
                 menuAdmin();
                 break;
-        
+            
             default:
                 System.out.println("Pilihan tidak tersedia");
                 break;
         }
     }
 
-    static void Pembelian() {
+    static void TambahAnggota() {
 
-        System.out.println("\n________________________________");
-        System.out.println("|==============================|");
-        System.out.println("|       Daftar Pembelian       |");
-        System.out.println("|------------------------------|");
-        System.out.println("|Sistem Perpustakaan Diponegoro|");
-        System.out.println("|                              |");
-        System.out.println("|______________________________|");
-            
-     
-        System.out.println("\n------------------------------------------------------------------|");
-        System.out.println("|     Judul Buku      |       Penulis         |       Harga       |");
-        System.out.println("|-----------------------------------------------------------------|");
-        for (int i = 0; i < jumlahBuku; i++) {    
-        if (perpustakaan[i][6] == purchasable) 
-            System.out.printf("|    %-15s|   %-18s|   %-20s|\n",
-                    perpustakaan[i][0], perpustakaan[i][1],
-                    perpustakaan[i][7]);
-        }
-        System.out.println("|-------------------------------------------------------------------------------------|");
-                
-        System.out.println("Masukkan Buku Yang Ingin Dibeli");
-                input.nextLine(); 
-                String katakunci = input.nextLine().toLowerCase(); 
-
-                boolean found = false;
-                for (int i = 0; i < jumlahBuku; i++) {
-            if (perpustakaan[i][0].toLowerCase().contains(katakunci)) {
-                System.out.println("Buku ini tersedia");
-                System.out.println("");
-                System.out.println("\n____________________________________________________________________");
-                System.out.println("|                                                                  |");
-                System.out.println("|Apakah anda ingin menambahkan buku kedalam keranjang (ya/tidak) ? |");
-                System.out.println("|__________________________________________________________________|");
-                System.out.println("");
-                String beli = input.nextLine();
-                found = true;
-                if (beli.equals("ya")) {
-                    riwayatPembelian[jumlahRiwayatPembelian][0] = perpustakaan[i][0];
-                    riwayatPembelian[jumlahRiwayatPembelian][1] = perpustakaan[i][1];
-                    riwayatPembelian[jumlahRiwayatPembelian][2] = perpustakaan[i][7];
-                    jumlahRiwayatPembelian++;
-                    System.out.println("");
-                    System.out.println("\n______________________________________________________");
-                    System.out.println("|                                                    |");
-                    System.out.println("|Buku berhasil ditambahkan silahkan membayar dikasir.|");
-                    System.out.println("|____________________________________________________|");
-                    System.out.println("");
-                }
-            }
-        }
-                    if(!found) {   
-                    System.out.println("\n_________________________");    
-                    System.out.println("|                       |");    
-                    System.out.println("|Buku ini tidak tersedia|");
-                    System.out.println("|_______________________|");
-                }
-                
-                
-                
-                    System.out.println("\n ______________________________________");
-                    System.out.println("|                                      |");
-                    System.out.println("|  Tekan ENTER untuk kembali ke Menu   |");
-                    System.out.println("|______________________________________|");
-                    input.nextLine();
-                    menuAdmin();
+       
                 }
     static void RiwayatTambah(){
         System.out.println("      Riwayat Penambahan Buku       ");
         System.out.println("|==================================|");
-        System.out.println("| Perpustakaan Pangeran Diponegoro |");
+        System.out.println("|     Perpustakaan Poltek Land     |");
         for (int i = 0; i < maxBuku; i++) {
             if (perpustakaan[i][0] != null && perpustakaan[i][7] != null) {
                 System.out.println("Buku ke-" + (i + 1));
@@ -780,7 +690,6 @@ public class index {
                 System.out.println("ISBN: " + perpustakaan[i][4]);
                 System.out.println("Jumlah Halaman: " + perpustakaan[i][5]);
                 System.out.println("Genre Buku: " + perpustakaan[i][6]);
-                System.out.println("Harga Buku: " + perpustakaan[i][7]);
                 System.out.println("------------------------------");
 
             }else if (perpustakaan[i][0] != null && !perpustakaan[i][0].isEmpty()) {
@@ -809,7 +718,7 @@ public class index {
         System.out.println("      Riwayat Peminjaman      ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("      Pangeran Diponegoro     ");
+        System.out.println("         {Poltek Land}         ");
         System.out.println("______________________________");
 
         System.out.println("\n--------------------------------------------------------------------------------------------------------------");
@@ -838,7 +747,7 @@ public class index {
         System.out.println("      Riwayat Peminjaman      ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("      Pangeran Diponegoro     ");
+        System.out.println("         {Poltek Land}        ");
         System.out.println("______________________________");
 
         System.out.println("\n--------------------------------------------------------------------------------------------------------------");
@@ -860,28 +769,6 @@ public class index {
         input.nextLine();
         Riwayat();
     }
-    static void RiwayatPembelian(){
-        System.out.println("\n_______________________________________________");
-        System.out.println("|               Riwayat Pembelian               |");
-        System.out.println("|-----------------------------------------------|");
-        System.out.println("|     Judul Buku      |       Penulis         |");
-        System.out.println("|-----------------------------------------------|");
-
-        if (jumlahRiwayatPembelian == 0) {
-            System.out.println("|           Belum ada pembelian                 |");
-        } else {
-            for (int i = 0; i < jumlahRiwayatPembelian; i++) {
-                System.out.printf("|    %-15s|   %-18s|\n", riwayatPembelian[i][0], riwayatPembelian[i][1]);
-            }
-        }
-        System.out.println("\n ______________________________________");
-        System.out.println("|                                      |");
-        System.out.println("|  Tekan ENTER untuk kembali           |");
-        System.out.println("|______________________________________|");
-        input.nextLine();
-        input.nextLine();
-        Riwayat();
-    }
 
     static void LogOut(){
         System.out.println("\n_______________________________");
@@ -890,7 +777,7 @@ public class index {
         System.out.println(" Terimakasih Telah Menggunakan ");
         System.out.println("-------------------------------");
         System.out.println("      Sistem Perpustakaan      ");
-        System.out.println("      Pangeran Diponegoro      ");
+        System.out.println("         {Poltek Land}         ");
         System.out.println("_______________________________");
         System.exit(0);
     }
@@ -898,7 +785,7 @@ public class index {
         System.out.println(" __________________________________");
         System.out.println("|            DAFTAR MENU           |");
         System.out.println("|        Sistem Perpustakaan       |");
-        System.out.println("|        Pangeran Diponegoro       |");
+        System.out.println("|           {Poltek Land}          |");
         System.out.println("|__________________________________|");
         System.out.println("|                                  |");
         System.out.println("| 1. Katalog Buku                  |");
@@ -937,7 +824,7 @@ public class index {
         System.out.println("        di Katalog Buku       ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("      Pangeran Diponegoro     ");
+        System.out.println("         {Poltek Land}        ");
         System.out.println("______________________________");
         System.out.println("\n ______________________");
         System.out.println("|     Katalog Buku     |");
@@ -947,12 +834,11 @@ public class index {
         System.out.println("| 3. Cerpen            |");
         System.out.println("| 4. Sejarah           |");
         System.out.println("| 5. Ilmu Pengetahuan  |");
-        System.out.println("| 6. Purchasable       |");
         System.out.println("|______________________|");
 
-        System.out.print("\nMasukkan Kategori Buku (1/2/3/4/5/6): ");
+        System.out.print("\nMasukkan Kategori Buku (1/2/3/4/5): ");
         int kategori = input.nextInt();
-        if(kategori > 6 || kategori == 0){
+        if(kategori > 5 || kategori == 0){
             System.out.println("Kategori Tidak Tersedia");
         }else if(kategori > 0 && kategori < 7){
             if(jumlahBuku > 0){
@@ -994,13 +880,8 @@ public class index {
                             System.out.println();
                         }
                         break;
-                        case 6:
-                        if (perpustakaan[i][6] == purchasable) {
-                            System.out.printf("| %-25s | %-20s | %-15s | %-13s | %-15s | %-15s | %-17s |", perpustakaan[i][0], perpustakaan[i][1], perpustakaan[i][2], perpustakaan[i][3], perpustakaan[i][4], perpustakaan[i][5], (bukuTersedia[i] ? "Tersedia" : "Tidak Tersedia"));
-                            System.out.println();
                         
-                        }
-                        break;
+                     
                         default:
                         System.out.println("Belum Ada Buku Yang Ditambahkan");
                     }
@@ -1026,11 +907,11 @@ public class index {
         System.out.println("        di Pencarian Buku    ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("      Pangeran Diponegoro     ");
+        System.out.println("         {Poltek Land}        ");
         System.out.println("______________________________");
     
         input.nextLine(); // Membersihkan buffer
-        System.out.print("\nMasukkan informasi buku yang ingin dicari: ");
+        System.out.print("\nMasukkan Nama buku yang ingin dicari : ");
         String keyword = input.nextLine().toLowerCase();
     
         boolean ditemukan = false;
