@@ -19,6 +19,9 @@ public class index {
     static boolean valid = false;
     static String[][] riwayatPeminjaman = new String[100][5];
     static int jumlahRiwayat = 0;
+    static int jumlahAnggota = 0;
+    static int kapasitas = 5;
+    static String[][] AnggotaPerpustakaan = new String[kapasitas][2];
 
     static String[][] riwayatPengembalian = new String[100][5];
     static int jumlahRiwayatPengembalian = 0;
@@ -137,8 +140,8 @@ public class index {
 
 
     }
-    public static void main(String[] args) {
-        defaultData();
+
+    static void login(){
         String login;
         // Tampilan awal ketika program dijalankan
         System.out.println("__________________________________");
@@ -166,13 +169,20 @@ public class index {
             SelectUser();
         }else if(login.equals("3")){
             System.exit(0);
+        } else {
+            System.out.println("Kategori yang anda masukkan salah, Harap cek kembali!!");
+            login();
         }
+    }
+    public static void main(String[] args) {
+        defaultData();
+        login();
     }
     public static void menuAdmin(){        
         System.out.println(" _____________________________________________________________________");
         System.out.println("|                             DAFTAR MENU                             |");
         System.out.println("|                         Sistem Perpustakaan                         |");
-        System.out.println("|                             {Poltek Land}                            |");
+        System.out.println("|                            {Poltek Land}                            |");
         System.out.println("|__________________________________"+"___________________________________|");
         System.out.println("|                                  |"+"                                  |");
         System.out.println("| 1. Katalog Buku                  |"+" 6. Penambahan Anggota            |");
@@ -209,7 +219,7 @@ public class index {
             case 5:
                 pengembalianBuku();
             case 6:
-                TambahAnggota();
+                Anggota();
                 break;
             case 7:
             PenambahanBuku();
@@ -313,8 +323,8 @@ public class index {
     static void aturanPeminjaman(){
         String rule1 = "1. Apabila ingin meminjam buku, harap konfirmasi kepada petugas perpustakaan.             ";
         String rule2 = "2. Maksimal lama peminjaman buku adalah 7 hari.                                               ";
-        String rule3 = "4. Keterlambatan pengembalian buku akan dikenakan denda dengan nominals sebesar Rp,-5000 :";
-        String rule4 ="5. Pembayaran denda keterlambatan dapat dibayarkan kepada petugas perpustakaan secara tunai maupun non tunai.";
+        String rule3 = "4. Keterlambatan pengembalian buku akan dikenakan denda dengan nominal sebesar Rp,-5000";
+        String rule4 = "5. Pembayaran denda keterlambatan dapat dibayarkan kepada petugas perpustakaan secara tunai maupun non tunai.";
 
         System.out.println("Aturan Peminjaman Buku:");
         System.out.println(rule1);
@@ -390,13 +400,13 @@ public class index {
         System.out.println("         {Poltek Land}        ");
         System.out.println("______________________________");
 
-        System.out.print("\nMasukkan Nama Anda            : ");
+        System.out.print("Masukkan Nama Anda            : ");
         input.nextLine();
         namaPeminjam = input.nextLine();
 
         boolean meminjam = true;
         while (meminjam) {
-            System.out.print("\nMasukkan Nama Buku        : ");
+            System.out.print("Masukkan Kode Buku        : ");
             namaBuku = input.nextLine();
             boolean bukuDitemukan = false;
         for (int i = 0; i < maxPinjam; i++) {
@@ -441,18 +451,18 @@ public class index {
         System.out.println("\n______________________________");
         System.out.println("______________________________");
         System.out.println("        Selamat Datang        ");
-        System.out.println("    di Pengembalian Buku      ");
+        System.out.println("      di Pengembalian Buku    ");
         System.out.println("------------------------------");
         System.out.println("      Sistem Perpustakaan     ");
-        System.out.println("       {Poltek Land}          ");
+        System.out.println("         {Poltek Land}        ");
         System.out.println("______________________________");
 
-        System.out.print("\nMasukkan Nama Anda            : ");
+        System.out.print("Masukkan Nama Anda           : ");
         input.nextLine();
         nama = input.nextLine();
         boolean bukuDitemukan = false;
         for (int i = 0; i < maxPinjam; i++) {
-            System.out.print("\nMasukkan Kode Buku            : ");
+            System.out.print("Masukkan Kode Buku       : ");
             namaBuku = input.nextLine();
             if (namaBuku.equalsIgnoreCase(perpustakaan[i][4])&& !bukuTersedia[i]) {
                 bukuTersedia[i] = true;
@@ -512,14 +522,11 @@ public class index {
             System.out.println("____________________________________");
             System.out.println("|         Fitur Tambah Buku        |");
             System.out.println("|==================================|");
-            System.out.println("| Perpustakaan Pangeran Diponegoro |");
-            System.out.println("|                                  |");
+            System.out.println("|     Perpustakaan Poltek Land     |");
             System.out.println("|                                  |");
             System.out.println("| 1. Tambah Buku                   |");
             System.out.println("| 2. Tampilkan Daftar Buku         |");
             System.out.println("| 3. Keluar                        |");
-            System.out.println("|                                  |");
-            System.out.println("|                                  |");
             System.out.println("|__________________________________|");
             System.out.print("Pilih menu (1/2/3): ");
             String pilihan = input.next();
@@ -572,7 +579,7 @@ public class index {
             System.out.println("| 4. Sejarah           |");
             System.out.println("| 5. Ilmu Pengetahuan  |");
             System.out.println("|______________________|");
-            System.out.print("Silahkan Pilih Genre Buku (1/2/3/4/5/):");
+            System.out.print("Silahkan Pilih Genre Buku (1/2/3/4/5):");
             int genreBuku = input.nextInt();
             switch (genreBuku){
                 case 1:
@@ -672,10 +679,89 @@ public class index {
         }
     }
 
-    static void TambahAnggota() {
+    static void Anggota() {
+            System.out.println("____________________________________");
+            System.out.println("|       Fitur Tambah Anggota       |");
+            System.out.println("|==================================|");
+            System.out.println("|     Perpustakaan Poltek Land     |");
+            System.out.println("|                                  |");
+            System.out.println("| 1. Tambah Anggota                |");
+            System.out.println("| 2. Tampilkan Anggota             |");
+            System.out.println("| 3. Keluar                        |");
+            System.out.println("|__________________________________|");
+            System.out.print("Pilih menu (1/2/3): ");
+            String pilihan = input.next();
+            input.nextLine();
 
+            switch (pilihan) {
+                case "1":
+                    tambahAnggota();
+                    break;
+                case "2":
+                    tampilkanAnggota();
+                    break;
+                case "3":
+                    menuAdmin();
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid. Silakan pilih lagi.");
+            }
+        }
+
+    static void tambahAnggota() {
+        System.out.print("Masukkan ID Anggota   : ");
+        String id = input.next();
+        System.out.print("Masukkan Nama Anggota : ");
+        String nama = input.next();
+        for (int i = 0; i < AnggotaPerpustakaan.length; i++) {
+            if (AnggotaPerpustakaan[i][0] == null) {
+                AnggotaPerpustakaan[i][0] = nama;
+                AnggotaPerpustakaan[i][1] = id;
+                System.out.println("Anggota berhasil ditambahkan.");
+                
+            }
+            System.out.println("Apakah anda ingin menambah data lagi (y/n) ?");
+        input.nextLine();
+        String pilih = input.nextLine();
+
+            if(pilih.equalsIgnoreCase("y")) {
+            }else if(pilih.equalsIgnoreCase("n")) {
+                System.out.println("Anggota berhasil ditambahkan!");
+                System.out.println("\n ______________________________________");
+                System.out.println("|                                      |");
+                System.out.println("|  Tekan ENTER untuk kembali           |");
+                System.out.println("|______________________________________|");
+                input.nextLine(); // mengosongkan input agar dapat menjalankan fungsi menu 
+                Anggota();
+	        }else {
+            	System.out.println("Proses invalid");
+                break;
+            } if (jumlahAnggota == kapasitas){
+                System.out.println("Kapasitas perpustakaan penuh. Tidak dapat menambahkan anggota baru.");
+            }
+        }
+        jumlahAnggota++;
        
-                }
+    }
+        
+    static void tampilkanAnggota() {
+        System.out.printf("| No. | %-10s | %-10s |%n", "ID","Nama");
+            System.out.println("|-----|------------|-----------|");
+        for (int i = 0; i < kapasitas; i++) {
+            if (AnggotaPerpustakaan[i][0] != null && AnggotaPerpustakaan[i][2] != null) {
+                System.out.printf("| %3d | %-20s | %-20s |%n",i+1, AnggotaPerpustakaan[i][0],AnggotaPerpustakaan[i][0]);
+
+            }else if (AnggotaPerpustakaan[i][0] != null && !AnggotaPerpustakaan[i][0].isEmpty()) {
+                System.out.printf("| %3d | %-20s | %-20s |%n", i + 1, AnggotaPerpustakaan[i][0],AnggotaPerpustakaan[i][1]);
+            }
+        }
+        System.out.println("\n ______________________________________");
+        System.out.println("|                                      |");
+        System.out.println("|  Tekan ENTER untuk kembali           |");
+        System.out.println("|______________________________________|");
+        input.nextLine(); // mengosongkan input agar dapat menjalankan fungsi menu admin
+    }
+    
     static void RiwayatTambah(){
         System.out.println("      Riwayat Penambahan Buku       ");
         System.out.println("|==================================|");
@@ -771,6 +857,11 @@ public class index {
     }
 
     static void LogOut(){
+        System.out.println("Apakah anda ingin melakukan transaksi lagi ? (Y/N)");
+        String pilih = input.nextLine();
+        if(pilih.equalsIgnoreCase("y")) {
+            menuAdmin();
+        } else if (pilih.equalsIgnoreCase("n")){
         System.out.println("\n_______________________________");
         System.out.println("_______________________________");
         System.out.println("       Log Out Berhasil !      ");
@@ -779,7 +870,8 @@ public class index {
         System.out.println("      Sistem Perpustakaan      ");
         System.out.println("         {Poltek Land}         ");
         System.out.println("_______________________________");
-        System.exit(0);
+        login();
+        }
     }
     public static void menuUser(){
         System.out.println(" __________________________________");
