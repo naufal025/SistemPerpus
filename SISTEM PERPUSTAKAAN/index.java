@@ -909,6 +909,8 @@ public class index {
             case 4:
                 LogOut();
                 break;
+            default :
+            System.out.println("Kategori tidak tersedia");
         }
     }
     static void KatalogBukuUser(){
